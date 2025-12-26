@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estampados Luna - Suéteres Personalizados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo::before {
+            content: "🌙";
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('./assets/hero-image.jpg') center/cover no-repeat;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding-top: 80px;
+            position: relative;
+            margin-top: 80px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #667eea;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #764ba2;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .info-box h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-box p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Catalog Section */
+        .catalog {
+            background: #f8f9fa;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            height: 250px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-image .emoji-placeholder {
+            font-size: 5rem;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+        }
+
+        .whatsapp-btn::before {
+            content: "💬";
+            font-size: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3436;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">Estampados Luna</div>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#nosotros">Nosotros</a></li>
+                <li><a href="#catalogo">Catálogo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <!-- <h1>Estampados Luna</h1>
+            <p>Suéteres personalizados para tus momentos especiales</p> -->
+            <a href="#catalogo" class="btn">Ver Catálogo</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="nosotros">
+        <h2>Sobre Nosotros</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <h3>Tu estilo, nuestra pasión</h3>
+                <p>En Estampados Luna nos especializamos en crear suéteres personalizados únicos para cada ocasión especial de tu vida.</p>
+                <p>Desde cumpleaños hasta aniversarios, bodas y celebraciones corporativas, transformamos tus ideas en prendas memorables con estampados de alta calidad.</p>
+                <p>Cada pieza es elaborada con dedicación y atención al detalle, garantizando que luzcas espectacular en esos momentos que más importan.</p>
+            </div>
+            <div class="info-box">
+                <h4>📍 Información de Contacto</h4>
+                <p><strong>Horario de Atención:</strong></p>
+                <p>Lunes a Viernes: 9:00 AM - 7:00 PM</p>
+                <p>Sábados: 10:00 AM - 6:00 PM</p>
+                <p>Domingos: Cerrado</p>
+                <br>
+                <p><strong>Ubicación:</strong></p>
+                <p>Servicio a domicilio y entregas personalizadas</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog Section -->
+    <section id="catalogo" class="catalog">
+        <h2>Nuestro Catálogo</h2>
+        <div class="products">
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/sueter-cumpleanos.jpg" alt="Suéter Cumpleaños">
+                </div>
+                <div class="product-info">
+                    <h3>Suéter Cumpleaños</h3>
+                    <p>Diseño personalizado para celebrar ese día especial. Incluye nombre y edad.</p>
+                    <div class="price">$45.00</div>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Cumpleaños" class="btn">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/sueter-parejas.jpg" alt="Suéter Parejas">
+                </div>
+                <div class="product-info">
+                    <h3>Suéter Parejas</h3>
+                    <p>Set de 2 suéteres coordinados perfectos para ti y tu pareja. Diseños complementarios.</p>
+                    <div class="price">$80.00</div>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Parejas" class="btn">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/sueter-navideno.jpg" alt="Suéter Navideño">
+                </div>
+                <div class="product-info">
+                    <h3>Suéter Navideño</h3>
+                    <p>Diseño festivo para las fiestas decembrinas. Varios motivos disponibles.</p>
+                    <div class="price">$50.00</div>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Navideño" class="btn">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/sueter-corporativo.jpg" alt="Suéter Corporativo">
+                </div>
+                <div class="product-info">
+                    <h3>Suéter Corporativo</h3>
+                    <p>Perfecto para eventos de empresa. Logo y colores corporativos personalizados.</p>
+                    <div class="price">$55.00</div>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Corporativo" class="btn">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/sueter-baby-shower.jpg" alt="Suéter Baby Shower">
+                </div>
+                <div class="product-info">
+                    <h3>Suéter Baby Shower</h3>
+                    <p>Diseño tierno para celebrar la llegada del bebé. Tallas para toda la familia.</p>
+                    <div class="price">$42.00</div>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Baby%20Shower" class="btn">Pedir por WhatsApp</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="./assets/sueter-graduacion.jpg" alt="Suéter Graduación">
+                </div>
+                <div class="product-info">
+                    <h3>Suéter Graduación</h3>
+                    <p>Conmemora ese logro importante con un diseño único y personalizado.</p>
+                    <div class="price">$48.00</div>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Graduación" class="btn">Pedir por WhatsApp</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto" class="contact">
+        <h2>¿Listo para comprar tu suéter personalizado?</h2>
+        <p>Contáctanos por WhatsApp y cuéntanos tu idea. ¡Hacemos realidad tu diseño!</p>
+        <a href="https://wa.me/18329070879" class="btn whatsapp-btn">Pedir por WhatsApp</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Estampados Luna. Todos los derechos reservados.</p>
+        <p>Creando momentos memorables, un suéter a la vez 🌙</p>
+    </footer>
+
+    <script>
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animación de entrada para las tarjetas de producto
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        });
+
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.6s, transform 0.6s';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
