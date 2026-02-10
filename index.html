@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,10 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        :root {
+            --header-height: 80px;
         }
 
         body {
@@ -26,7 +31,8 @@
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            height: var(--header-height);
         }
 
         nav {
@@ -67,20 +73,21 @@
             opacity: 0.8;
         }
 
-        /* Hero Section */
+        /* Hero Section - SOLUCIÓN FINAL PARA MÓVIL */
         .hero {
-            background: url('./assets/hero-image.jpg') center/cover no-repeat;
-            min-height: 100vh;
+            background-image: url('./assets/hero-image.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+            min-height: calc(100svh - var(--header-height));
+            margin-top: var(--header-height);
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
-            text-align: center;
-            color: white;
-            padding-top: 80px;
             position: relative;
-            margin-top: 80px;
+            padding-bottom: 3rem;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -88,26 +95,30 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.3);
+            background: rgba(0, 0, 0, 0.15);
             z-index: 1;
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
+            text-align: center;
+            padding: 0 1rem;
         }
 
         .hero-content h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.8);
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
             font-weight: 700;
+            color: white;
         }
 
         .hero-content p {
             font-size: 1.5rem;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: white;
         }
 
         .btn {
@@ -119,12 +130,12 @@
             border-radius: 50px;
             font-size: 1.1rem;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         /* Sections */
@@ -165,7 +176,7 @@
             padding: 2rem;
             border-radius: 15px;
             color: white;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .info-box h4 {
@@ -192,13 +203,13 @@
             background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .product-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
         .product-image {
@@ -211,18 +222,18 @@
             overflow: hidden;
             position: relative;
         }
-        
+
         .product-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.3s;
         }
-        
+
         .product-card:hover .product-image img {
             transform: scale(1.1);
         }
-        
+
         .product-image .emoji-placeholder {
             font-size: 5rem;
         }
@@ -287,10 +298,48 @@
             padding: 2rem;
         }
 
-        /* Responsive */
+        /* Responsive - OPTIMIZADO PARA MOSTRAR TODO EN MÓVIL */
+        @media (max-width: 1200px) {
+            .hero {
+                /* En pantallas medianas: ajusta para ver más del lado izquierdo */
+                background-position: 35% center;
+            }
+        }
+
         @media (max-width: 768px) {
+            :root {
+                --header-height: 64px;
+            }
+
             nav ul {
                 display: none;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .logo::before {
+                font-size: 1.6rem;
+            }
+
+            .hero {
+                /* CLAVE: En móvil muestra la imagen COMPLETA sin recortar */
+                /* background-size: contain mantiene toda la imagen visible */
+                background-size: contain;
+                background-position: center top;
+                background-color: #1a1a1a;
+                min-height: calc(100svh - var(--header-height));
+                align-items: flex-end;
+                padding-bottom: 2rem;
+            }
+
+            /* Overlay más oscuro en los bordes para móvil */
+            .hero::before {
+                background: linear-gradient(to bottom, 
+                    rgba(0, 0, 0, 0) 0%,
+                    rgba(0, 0, 0, 0) 70%,
+                    rgba(0, 0, 0, 0.3) 100%);
             }
 
             .hero-content h1 {
@@ -301,12 +350,42 @@
                 font-size: 1.2rem;
             }
 
+            .btn {
+                padding: 0.9rem 2.2rem;
+                font-size: 1rem;
+            }
+
             .about-content {
                 grid-template-columns: 1fr;
             }
 
             h2 {
                 font-size: 2rem;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .contact p {
+                font-size: 1rem;
+            }
+
+            .whatsapp-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* Para pantallas MUY anchas (desktop grande) */
+        @media (min-width: 1400px) {
+            .hero {
+                background-position: 40% center;
             }
         }
 
@@ -316,6 +395,7 @@
         }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header>
@@ -333,8 +413,7 @@
     <!-- Hero Section -->
     <section id="inicio" class="hero">
         <div class="hero-content">
-            <!-- <h1>Estampados Luna</h1>
-            <p>Suéteres personalizados para tus momentos especiales</p> -->
+            <!-- El texto ya está en la imagen, solo mostramos el botón -->
             <a href="#catalogo" class="btn">Ver Catálogo</a>
         </div>
     </section>
@@ -345,9 +424,12 @@
         <div class="about-content">
             <div class="about-text">
                 <h3>Tu estilo, nuestra pasión</h3>
-                <p>En Estampados Luna nos especializamos en crear suéteres y camisetas personalizados únicos para cada ocasión especial de tu vida.</p>
-                <p>Desde cumpleaños hasta aniversarios, bodas y celebraciones corporativas, transformamos tus ideas en prendas memorables con estampados de alta calidad.</p>
-                <p>Cada pieza es elaborada con dedicación y atención al detalle, garantizando que luzcas espectacular en esos momentos que más importan.</p>
+                <p>En Estampados Luna nos especializamos en crear suéteres y camisetas personalizados únicos para cada
+                    ocasión especial de tu vida.</p>
+                <p>Desde cumpleaños hasta aniversarios, bodas y celebraciones corporativas, transformamos tus ideas en
+                    prendas memorables con estampados de alta calidad.</p>
+                <p>Cada pieza es elaborada con dedicación y atención al detalle, garantizando que luzcas espectacular en
+                    esos momentos que más importan.</p>
             </div>
             <div class="info-box">
                 <h4>📍 Información de Contacto</h4>
@@ -374,7 +456,8 @@
                     <h3>Camiseta Cumpleaños</h3>
                     <p>Diseño personalizado para celebrar ese día especial. Incluye nombre y edad.</p>
                     <div class="price">$20.00</div>
-                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Cumpleaños" class="btn">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Cumpleaños"
+                        class="btn">Pedir por WhatsApp</a>
                 </div>
             </div>
 
@@ -386,7 +469,8 @@
                     <h3>Camisetas Parejas</h3>
                     <p>Set de 2 camisetas coordinados perfectos para ti y tu pareja. Diseños complementarios.</p>
                     <div class="price">$20.00</div>
-                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Parejas" class="btn">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Parejas"
+                        class="btn">Pedir por WhatsApp</a>
                 </div>
             </div>
 
@@ -398,7 +482,8 @@
                     <h3>Suéter Navideño</h3>
                     <p>Diseño festivo para las fiestas decembrinas. Varios motivos disponibles.</p>
                     <div class="price">$20.00</div>
-                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Navideño" class="btn">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Navideño"
+                        class="btn">Pedir por WhatsApp</a>
                 </div>
             </div>
 
@@ -410,7 +495,8 @@
                     <h3>Camiseta Corporativa</h3>
                     <p>Perfecto para eventos de empresa. Logo y colores corporativos personalizados.</p>
                     <div class="price">$20.00</div>
-                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Corporativo" class="btn">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Corporativo"
+                        class="btn">Pedir por WhatsApp</a>
                 </div>
             </div>
 
@@ -422,7 +508,8 @@
                     <h3>Camiseta Baby Shower</h3>
                     <p>Diseño tierno para celebrar la llegada del bebé. Tallas para toda la familia.</p>
                     <div class="price">$20.00</div>
-                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Baby%20Shower" class="btn">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Baby%20Shower"
+                        class="btn">Pedir por WhatsApp</a>
                 </div>
             </div>
 
@@ -434,7 +521,8 @@
                     <h3>Suéter Graduación</h3>
                     <p>Conmemora ese logro importante con un diseño único y personalizado.</p>
                     <div class="price">$35.00</div>
-                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Graduación" class="btn">Pedir por WhatsApp</a>
+                    <a href="https://wa.me/18329070879?text=Hola,%20me%20interesa%20el%20Suéter%20Graduación"
+                        class="btn">Pedir por WhatsApp</a>
                 </div>
             </div>
         </div>
@@ -444,12 +532,13 @@
     <section id="contacto" class="contact">
         <h2>¿Listo para comprar tu camiseta o suéter personalizado?</h2>
         <p>Contáctanos por WhatsApp y cuéntanos tu idea. ¡Hacemos realidad tu diseño!</p>
+        <p>Puedes ver la galeria completa en el WhatsApp!</p>
         <a href="https://wa.me/18324978530" class="btn whatsapp-btn">Pedir por WhatsApp</a>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Estampados Luna. Todos los derechos reservados.</p>
+        <p>&copy; 2026 Estampados Luna. Todos los derechos reservados.</p>
         <p>Creando momentos memorables, un suéter a la vez 🌙</p>
     </footer>
 
@@ -486,4 +575,5 @@
         });
     </script>
 </body>
+
 </html>
